@@ -8,6 +8,8 @@ services:
       dockerfile: docker/inventory-system/Dockerfile
     volumes:
       - "./src/mtg_inventory_system/:/src/:delegated"
+    env_file:
+      - ./.env
     ports:
       - "8000:8000"
     depends_on:
@@ -18,7 +20,7 @@ services:
     image: postgres:14.5-alpine
     restart: always
     env_file:
-      - ./src/mtg_inventory_system/mtg_inventory_system/.env
+      - ./.env
     ports:
       - "5432:5432"
 
@@ -31,4 +33,4 @@ services:
 #      dockerfile: docker/mtg-card-detector/Dockerfile
 #      target: mtg-card-detector
 #    volumes:
-#      - "./src/card_image_detector/:/src/:delegated"
+#      - "./container/card_image_detector/:/src/:delegated"
