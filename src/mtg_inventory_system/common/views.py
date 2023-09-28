@@ -46,12 +46,16 @@ class CardsListView(ListView):
                 ).distinct('card__id').values('small_img_uri')
             )
         )
+        logger.info(f'Result before search term: {result}')
+        logger.info(f'Queryset length: {len(result)}')
         query = self.request.GET.get('search')
+        logger.info(f'Searching for card with "{query}"')
         if query:
             post_result = result.filter(
                 Q(name__icontains=query) |
                 Q(cardface__type_line__icontains=query) |
-                Q(cardface__oracle_text__icontains=query))
+                Q(cardface__oracle_text__icontains=query)).all()
+            logger.info(f'Result after search term filtering: {post_result}')
             result = post_result
         return result
 

@@ -32,6 +32,9 @@ class CardSet(models.Model):
     scryfall_set_cards_uri = models.URLField()
     icon_uri = models.URLField(null=True)
 
+    def __str__(self):
+        return f'{self.name}'
+
     @staticmethod
     def get_raw_json_for_bulk_operations(set_json):
         return {
