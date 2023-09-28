@@ -13,7 +13,10 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - mtg-postgres
+      mtg-postgres:
+        condition: service_healthy
+        restart: true
+        required: true
 
   mtg-postgres:
     container_name: mtg-postgres
@@ -23,6 +26,11 @@ services:
       - ./.env
     ports:
       - "5432:5432"
+    healthcheck:
+      test: pg_isready -U postgres -d postgres
+      interval: 10s
+      timeout: 3s
+      retries: 3
 
 #  mtg-ai-card-detector:
 #    container_name: mtg-card-detector
