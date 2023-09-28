@@ -40,6 +40,10 @@ Get to the container shell
 Run migrations on database
 `python manage.py migrate`
 
+Import card data
+`python manage.py update_all_cards`
+`python manage.py get_card_prices`
+
 Create the admin account
 `python manage.py createsuperuser --username=[your-username] --email=[your-email]`
 Enter a new password for your account, when prompted
@@ -47,3 +51,8 @@ Repeat the password, when prompted.
 
 5. Log in with newly created account
 http://127.0.0.1:8000/login/
+
+ToDo:
+- There seems to be a version conflict between psql installed on the python container and the version of postgres on the DB container.
+  - Perhaps update python container to psql client 14 (preference)
+  - Perhaps force older postgres on DB container
