@@ -72,7 +72,7 @@ class Card(models.Model):
     time_added_to_db = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
-    collector_number = models.CharField(max_length=10, default="")
+    # collector_number = models.CharField(max_length=10, default="")
 
     # Foreign Relations
     card_set = models.ForeignKey(CardSet, on_delete=models.DO_NOTHING)
