@@ -37,6 +37,9 @@ DB_PORT=5432
 Get to the container shell
 `docker exec -it mtg-inventory-system bash`
 
+Run migrations on database
+`python manage.py migrate`
+
 Create the admin account
 `python manage.py createsuperuser --username=[your-username] --email=[your-email]`
 Enter a new password for your account, when prompted
