@@ -53,6 +53,11 @@ Repeat the password, when prompted.
 http://127.0.0.1:8000/login/
 
 ToDo:
-- There seems to be a version conflict between psql installed on the python container and the version of postgres on the DB container.
+- [RESOLVED] There seems to be a version conflict between psql installed on the python container and the version of postgres on the DB container.
   - Perhaps update python container to psql client 14 (preference)
   - Perhaps force older postgres on DB container
+
+Building a docker image
+- From project base `docker build -f docker/inventory-system/Dockerfile .`
+  - The trailing period `.` sets the context for the build
+  - Won't need to do this, because `docker-compose` builds a new image (as long as one doesn't already exist)
